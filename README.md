@@ -3,9 +3,11 @@ CS364A: Algorithmic Game Theory (Stanford) by Tim Roughgarden
 
 https://theory.stanford.edu/~tim/f13/f13.html
 
-## One
+## One - Braess’s Paradox/Nash’s Theorem
 
-## Two
+
+
+## Two - Mechanism Design
 
 https://theory.stanford.edu/~tim/f13/l/l2.pdf
 
@@ -26,7 +28,13 @@ The second important property is that a truthtelling bidder will never regret pa
 In a second-price auction, every truthtelling bidder is guaranteed non-negative utility.
 
 The Vickrey auction is awesome. Meaning, it enjoys three quite different and desirable properties:
-1) strong incentive guarantees. It is dominant-strategy incentive-compatible (DSIC)
+1) strong incentive guarantees. It is dominant-strategy incentive-compatible (**DSIC**)
 2) strong performance guarantees. If bidders report truthfully, then the auction maximizes the social surplus
 3) computational efficiency. The auction can be implemented in polynomial (indeed,linear) time.
+
+> What’s hard about mechanism design problems is that we have to jointly design two things: the choice of who wins what (allocation rule design), and the choice of who pays what (payment rule design).
+
+### Three - Myerson’s Lemma
+
+https://theory.stanford.edu/~tim/f13/l/l3.pdf
 
