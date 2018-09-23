@@ -3,6 +3,30 @@ CS364A: Algorithmic Game Theory (Stanford) by Tim Roughgarden
 
 https://theory.stanford.edu/~tim/f13/f13.html
 
+## Terms:
+
+### Mechanism design
+
+Mechanism design is a field in economics and game theory that takes an engineering approach to designing economic mechanisms or incentives, toward desired objectives, in strategic settings, where players act rationally. Because it starts at the end of the game, then goes backwards, it is also called reverse game theory. It has broad applications, from economics and politics (markets, auctions, voting procedures) to networked-systems (internet interdomain routing, sponsored search auctions).
+
+### Strategic dominance
+Strategic dominance (commonly called simply dominance) occurs when one strategy is better than another strategy for one player, no matter how that player's opponents may play. Many simple games can be solved using dominance. 
+ 
+### Incentive-compatible
+A mechanism is called incentive-compatible (IC) if every participant can achieve the best outcome to him/herself just by acting according to his/her true preferences.
+
+### DSIC
+The stronger degree is dominant-strategy incentive-compatibility (DSIC). It means that truth-telling is a weakly-dominant strategy, i.e you fare best or at least not worse by being truthful, regardless of what the others do. In a DSIC mechanism, strategic considerations cannot help any agent achieve better outcomes than the truth; hence, such mechanisms are also called strategyproof or truthful.
+
+### BNIC
+A weaker degree is Bayesian-Nash incentive-compatibility (BNIC). It means that there is a Bayesian Nash equilibrium in which all participants reveal their true preferences. I.e, if all the others act truthfully, then it is also best or at least not worse for you to be truthful
+
+### Revelation principle
+
+The **revelation principle** is a fundamental principle in mechanism design. It states that if a social choice function can be implemented by an arbitrary mechanism (i.e. if that mechanism has an equilibrium outcome that corresponds to the outcome of the social choice function), then the same function can be implemented by an incentive-compatible-direct-mechanism (i.e. in which players truthfully report type) with the same equilibrium outcome (payoffs)
+
+# Lectures
+
 ## One - Braess’s Paradox/Nash’s Theorem
 
 
@@ -96,3 +120,38 @@ A very rough rule of thumb is that, for sufficiently simple problems like those 
 The point of Theorem 3.1 is that, at least in principle, if you design a mechanism to have dominant strategies, then you might as well design for direct revelation (in auctions, truthful bidding) to be a dominant strategy.
 
 Many equilibrium concepts other than dominant-strategy equilibria, such as *Bayes-Nash equilibria*, have their own Revelation Principle. Such principles state that, given the choice of incentive constraints, direct revelation is without loss of generality. Thus, truthfulness per se is not important; what makes mechanism design hard is the requirement that a desired outcome (without loss of generality, truthful reporting) in an equilibrium of some type. Varying the choice of equilibrium concept can lead to quite different mechanism design theories, with stronger equilibrium concepts (like dominant-strategy equilibria) requiring weaker behavioral assumptions but with narrower reach than weaker equilibrium concepts (like Bayes-Nash equilibria).
+
+### Revelation principle
+
+The **revelation principle** is a fundamental principle in mechanism design. It states that if a social choice function can be implemented by an arbitrary mechanism (i.e. if that mechanism has an equilibrium outcome that corresponds to the outcome of the social choice function), then the same function can be implemented by an incentive-compatible-direct-mechanism (i.e. in which players truthfully report type) with the same equilibrium outcome (payoffs)
+
+## Six - Simple Near-Optimal Auctions
+Today we’ll seek out auctions that are simpler, more practical, and more robust than the theoretically optimal auction. Since optimality requires complexity, we can only hope that our auctions are approximately optimal. This is the second time we’ve turned to ap- proximation to escape a quandary posed by full optimality.
+
+An interesting open research question is to understand how well the Vickrey auction with an anonymous reserve price (i.e., eBay) can approximate the optimal expected revenue in a single-item auction when bidders valuations are drawn from non-i.i.d. regular distributions. Partial results are known: there is such an auction that recovers at least 25% of the optimal revenue, and no such auction always recovers more than 50% of the optimal revenue.
+
+The expected revenue of a Vickrey auction can obviously only be less than that of an optimal auction; yet the following result, due to Bulow and Klemperer, shows that this inequality reverses when the Vickrey auction’s environment is made slightly more competitive.
+
+### Bulow-Klemperer theorem
+
+The usual interpretation of the Bulow-Klemperer theorem, which also has anecdotal
+support in practice, is that extra competition is more important than getting the auction format just right. That is, invest your resources into getting more serious participants, rather than sharpening your knowledge of their preferences (of course, do both if you can!).
+
+A **Reserve Price** is a hidden minimum price that the seller is willing to accept for an item. 
+
+The obvious experiment is to try out the theoretically optimal (and generally higher) reserve prices to see how they do. Yahoo!’s top brass wanted to be a little more conservative, though, and set the new reserve prices to be the average of the old ones ($.10) and the theoretically optimal ones.5 And the change worked: auction revenues went up several per cent (of a very large number). The new reserve prices were especially effective in markets that are valuable but “thin,” meaning not very competitive (less than 6 bidders). Better reserve prices were credited by Yahoo!’s president as the biggest reason for higher search revenue in Yahoo!’s third-quarter report in 2008.
+
+Increasing the reserve price further does not have much effect on revenue.
+
+## Seven - Multi-Parameter Mechanism Design and the VCG Mechanism
+
+Theorem 2.1 (The Vickrey-Clarke-Groves (VCG) Mechanism) In every general mechanism design environment, there is a DSIC welfare-maximizing mechanism.
+
+The upshot of the VCG mechanism is that, in general multi-parameter environments, DSIC welfare-maximization is always possible in principle. While it can be infeasible to implement in practice, the VCG mechanism nevertheless serves as a useful benchmark for other, more practical approaches.
+
+Namely, the VCG mechanism can have bad revenue and incentive properties, despite being DSIC.
+
+### Combinatorial auctions
+A combinatorial auction has n bidders — for example, Verizon, AT & T, and several regional providers. There is a set M of m items, which are not identical — for example, a license awarding the right to broadcast on a certain frequency in a given geographic area.
+
+For instance, suppose there are two bidders and two items, A and B. The first bidder only wants both items, so v1(AB) = 1 and is 0 otherwise. The second bidder only wants item A, so v2(AB) = v2(A) = 1 and is 0 otherwise. The revenue of the VCG mechanism is 1 in this example (exercise). But now suppose we add a third bidder who only wants item B, so v3(AB) = v3(B) = 1. The maximum welfare has jumped to 2, but the VCG revenue has dropped to 0 (exercise)! The fact that the VCG mechanism has zero revenue in seemingly competitive environments is a dealbreaker in practice. The revenue non-monotonicity in this example also implies numerous incentive problems, including vulnerability to collusion and false-name bids (see the exercises). None of these issues plague the single-item Vickrey auction.
