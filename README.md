@@ -155,3 +155,23 @@ Namely, the VCG mechanism can have bad revenue and incentive properties, despite
 A combinatorial auction has n bidders — for example, Verizon, AT & T, and several regional providers. There is a set M of m items, which are not identical — for example, a license awarding the right to broadcast on a certain frequency in a given geographic area.
 
 For instance, suppose there are two bidders and two items, A and B. The first bidder only wants both items, so v1(AB) = 1 and is 0 otherwise. The second bidder only wants item A, so v2(AB) = v2(A) = 1 and is 0 otherwise. The revenue of the VCG mechanism is 1 in this example (exercise). But now suppose we add a third bidder who only wants item B, so v3(AB) = v3(B) = 1. The maximum welfare has jumped to 2, but the VCG revenue has dropped to 0 (exercise)! The fact that the VCG mechanism has zero revenue in seemingly competitive environments is a dealbreaker in practice. The revenue non-monotonicity in this example also implies numerous incentive problems, including vulnerability to collusion and false-name bids (see the exercises). None of these issues plague the single-item Vickrey auction.
+
+## Eight - Combinatorial and Wireless Spectrum Auctions
+
+Selling Items Separately.
+
+There is a fundamental dichotomy between combinatorial auctions in which items are substitutes, and those in which items are complements — with the former being far easier, in theory and in practice, than the latter. 
+
+In a spectrum auction context, two licenses for the same area with equal-sized frequency ranges are usually substitute items. Theory indicates that selling items separately has a chance to work well when items are (mostly) substitutes. 
+
+With complements, welfare maximization (without incentive constraints) is already a very difficult problem; see also Problem 5. We cannot expect a simple auction format like separate single-item auctions to perform well in such environments.
+
+### Simultaneous ascending auctions (SAAs)
+
+Simultaneous ascending auctions (SAAs) form the basis of most spectrum auctions run over the last 20 years. We discuss the basic format first, and then some of the bells and whistles that have been added on over the years. Conceptually, SAAs are like a bunch of single-item English auctions being run in parallel in the same room, with one auctioneer per item. More precisely, each round, each bidder can place a new bid on any subset of items that it wants, subject to an activity rule. The activity rule forces all bidders to participate in the auction from the beginning and contribute to the price discovery discussed below. The details of an activity rule can be complex, but the gist is to require that the number of items that a bidder bids on only decreases over time as prices rise. Generally, the high bids and bidders are visible to all — even though this can encourage signaling and retaliatory bids (recall USWest vs. McLeod last lecture). The first round with no new bids ends the auction.
+
+SAAs have two big vulnerabilities. The first problem is demand reduction, and this is relevant even when items are substitutes. Demand reduction occurs when a bidder asks for fewer items than it really wants, to lower competition and therefore the prices paid for the items that it gets.
+
+The second big problem with SAAs, which is relevant when items are complements (in- cluding in many spectrum auctions), is the exposure problem. As an example, consider two bidders and two non-identical items. Bidder 1 only wants both items — they are comple- mentary items for the bidder — and its valuation is 100 for them (and 0 otherwise). Bidder 2 is willing to pay 75 for either item. The VCG mechanism would give both items to bidder 1, for a welfare of 100, and would generate revenue 75. In a SAA, though, bidder 2 will not drop out until the price of each item reaches 75. Bidder 1 is in a no-win situation: to get both items it would have to pay 150, more than its value. The scenario of winning only one item for a non-trivial price could be even worse. On the other hand, if bidder 2’s value for each item was only 40, then bidder 1 should just go for it. But how can bidder 1 know which scenario is closer to the truth? The exposure problem makes bidding in an SAA difficult for a bidder for whom items are complements, and it often leads to risk-averse, tentative bidding by such bidders.
+
+
